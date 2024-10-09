@@ -1,6 +1,6 @@
 from django.db import models
 
-class jobs(models.Model):
+class job_listings(models.Model):
     job_id = models.AutoField(primary_key=True)
     company_name = models.CharField(max_length=161)
     job_title = models.CharField(max_length=100)
