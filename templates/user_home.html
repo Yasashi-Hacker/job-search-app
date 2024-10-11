@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search|Sokunabi</title>
+    <style>
+        body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+        }
+        h1 {
+                font-size: 70px; 
+                color: #0072C6;
+                margin-top:-120px;
+                margin-bottom:50px;
+        }
+        input {
+                width: 500px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 40px;
+                padding-right: 40px;
+                font-size: 22px;
+                border: 2px solid #0072C6;
+                border-radius: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sokunabi</h1>
+    <form action="search/" method="GET">
+        <input type="text" placeholder="Company or Job Title" name="search_bar" required>
+    </form>
+</body>
+</html>
