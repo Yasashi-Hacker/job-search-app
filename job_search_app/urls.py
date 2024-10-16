@@ -17,10 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from users.views import sign_up,user_login,index,user_home
+from companies.views import for_employers,co_sign_up,co_login,co_home
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sign-up/', sign_up, name = 'sign_up'),
     path('login/', user_login, name = 'login' ),
     path('', index, name = 'index'),
     path('user-home/', user_home, name= 'user_home'),
+    path('for-employers/', for_employers, name = 'for_employers'),
+    path('co-sign-up/', co_sign_up, name = 'co_sign_up'),
+    path('co-login/', co_login, name = 'co_login'),
+    path('co-home/', co_home, name= 'co_home')    
 ]

@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from users.forms import SignUpForm, LoginForm
 from django.contrib.auth import authenticate, login
+from users.models import User
 
 def index(request):
     return render(request, 'index.html', {})
@@ -23,7 +24,7 @@ def user_login(request):
             ID = form.cleaned_data['user_id']
             password = form.cleaned_data['password']
             user = authenticate(request, username=ID, password=password)
-            if user is not None:
+            if user is not None and not user.is_employer:
                 login(request, user)
                 return redirect('user_home')
             else:

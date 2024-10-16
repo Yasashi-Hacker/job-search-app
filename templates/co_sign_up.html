@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up for Employers|Sokunabi</title>
+<style>
+    body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+        }
+    h1  {
+            font-size: 70px; 
+            color: #0072C6;
+            margin-top:-40px;
+            margin-bottom:50px;
+        }        
+</style>
+</head>
+<body>
+    <h1>Sign up for Employers</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div style="margin-bottom: 40px;">{{form.as_p }}</div>
+        <p><button style="margin-left: 300px;" type="submit">SIGN UP</button></p>
+    </form>
+</body>
+</html>

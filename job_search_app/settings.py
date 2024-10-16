@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'users',
-    'jobs'
+    'jobs',
+    'companies'
 ]
 
 MIDDLEWARE = [
@@ -133,6 +134,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # User Defined Model settings
 
-AUTH_USER_MODEL = 'users.users'
-
-# se
+AUTH_USER_MODEL = 'users.User'
