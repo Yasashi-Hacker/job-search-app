@@ -1,6 +1,7 @@
 from django.shortcuts import render,redirect
 from jobs.forms import PostingForm
 from django.contrib import messages
+from jobs.models import Job
 
 def post_a_job(request):
     if request.method == 'POST':
@@ -23,4 +24,10 @@ def post_a_job(request):
     return render(request, 'post_a_job.html', {'form': form})
 
 def jobs(request):
-    return render(request, 'jobs.html', {})
+    if request.user.is_authenticated:
+        company_name = request.user.username
+        jobs = Job.objects.filter(company_name = company_name)
+        return render(request, 'jobs.html', {'jobs': jobs})
+    else:
+        return redirect('co_login')
+    

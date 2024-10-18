@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up for Employers|Sokunabi</title>
+<style>
+    body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+        }
+    h1  {
+                font-size: 60px; 
+                color: #0072C6;
+                margin-top:-270px;
+                margin-bottom:50px;
+        }
+    td  {       
+                padding: 10px;
+        }        
+</style>
+</head>
+<body>
+    <h1>Job Listings</h1>
+    <div style="margin-bottom: 40px;">
+        <table style="border-collapse: collapse; font-size: 25px;">
+            <thead>
+                <tr style="background-color: #0072C6;"">
+                    <th>Job Title</th>
+                    <th>Deadline</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for object in jobs %}
+                <tr>
+                    <td>{{ object.job_title }}</td>
+                    <td>{{ object.deadline }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
