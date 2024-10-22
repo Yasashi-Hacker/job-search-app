@@ -37,7 +37,7 @@
             <tbody>
             {% for object in jobs %}
                 <tr>
-                    <td>{{ object.job_title }}</td>
+                    <td><a href="{% url 'detail' object.id %}">{{ object.job_title }}</a></td>
                     <td>{{ object.deadline }}</td>
                 </tr>
             {% endfor %}

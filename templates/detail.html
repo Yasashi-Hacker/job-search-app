@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Jobs|Sokunabi</title>
+<style>
+    body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+        }
+    .job_detail  {
+                font-size: 20px; 
+        }
+</style>
+</head>
+<body>
+    <div class="job_detail">
+        <p>Job Title:<br><strong>{{ job.job_title }}</strong></br></p>
+        <p>Salary:<br><strong>{{ job.salary }}円</strong></br></p>
+        <p>Qualification:</br><strong>{{ job.qualification }}</strong></br></p>
+        <p>Job Description:<br><strong>{{ job.job_description }}</strong></br></p>
+        <p>Process:<br><strong>{{ job.process }}</strong></br></p>
+        Deadline:<br><strong>{{ job.deadline }}</strong></br>
+    </div>
+</body>
+</html>

@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from jobs.forms import PostingForm
 from django.contrib import messages
 from jobs.models import Job
+from django.views.generic import DetailView
 
 def post_a_job(request):
     if request.method == 'POST':
@@ -30,4 +31,8 @@ def jobs(request):
         return render(request, 'jobs.html', {'jobs': jobs})
     else:
         return redirect('co_login')
-    
+
+class detail(DetailView):
+    model = Job
+    template_name = 'detail.html'
+    context_object_name = 'job'

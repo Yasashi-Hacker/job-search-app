@@ -18,7 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from users.views import sign_up,user_login,index,user_home
 from companies.views import for_employers,co_sign_up,co_login,co_home
-from jobs.views import post_a_job,jobs
+from jobs.views import post_a_job,jobs, detail
+from django.views.generic import DetailView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('sign-up/', sign_up, name = 'sign_up'),
@@ -30,6 +32,6 @@ urlpatterns = [
     path('co-login/', co_login, name = 'co_login'),
     path('co-home/', co_home, name= 'co_home'),
     path('post-a-job/', post_a_job, name= 'post_a_job'),
-    path('jobs/', jobs, name='jobs')
-
+    path('jobs/', jobs, name='jobs'),
+    path('jobs/<int:pk>/', detail.as_view(), name='detail')
 ]
