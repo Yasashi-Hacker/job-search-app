@@ -2,7 +2,8 @@ from django.shortcuts import render,redirect
 from jobs.forms import PostingForm
 from django.contrib import messages
 from jobs.models import Job
-from django.views.generic import DetailView
+from django.views.generic import DetailView,UpdateView
+from django.urls import reverse_lazy
 
 def post_a_job(request):
     if request.method == 'POST':
@@ -36,3 +37,9 @@ class detail(DetailView):
     model = Job
     template_name = 'detail.html'
     context_object_name = 'job'
+
+class update(UpdateView):
+    model = Job
+    form_class = PostingForm
+    template_name = 'update.html'
+    success_url = reverse_lazy('jobs')

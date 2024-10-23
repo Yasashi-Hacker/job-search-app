@@ -27,5 +27,6 @@
         <p>Process:<br><strong>{{ job.process }}</strong></br></p>
         Deadline:<br><strong>{{ job.deadline }}</strong></br>
     </div>
+    <p><a href="{% url 'update' job.id %}">Update</a></p>
 </body>
 </html>
