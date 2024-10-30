@@ -14,12 +14,16 @@
                 margin: 0;
         }
     .job_detail  {
-                font-size: 20px; 
+                font-size: 25px; 
         }
+    .update_and_delete {
+        display: flex;
+        flex-direction: row;
+    }
 </style>
 </head>
 <body>
-    <div class="job_detail">
+    <div class="job_detail" style="margin-bottom: 60px;">
         <p>Job Title:<br><strong>{{ job.job_title }}</strong></br></p>
         <p>Salary:<br><strong>{{ job.salary }}円</strong></br></p>
         <p>Qualification:</br><strong>{{ job.qualification }}</strong></br></p>
@@ -27,6 +31,12 @@
         <p>Process:<br><strong>{{ job.process }}</strong></br></p>
         Deadline:<br><strong>{{ job.deadline }}</strong></br>
     </div>
-    <p><a href="{% url 'update' job.id %}">Update</a></p>
+    <div class="update_and_delete">
+        <a href="{% url 'update' job.id %}" style="margin-right: 10px;">Update</a>
+        <form method="POST" action="{% url 'delete' job.pk %}">
+            {% csrf_token %}
+            <button type="submit">Delete</button>
+        </form>
+    </div>
 </body>
 </html>

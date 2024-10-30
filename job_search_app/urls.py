@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from users.views import sign_up,user_login,index,user_home
 from companies.views import for_employers,co_sign_up,co_login,co_home
-from jobs.views import post_a_job,jobs, detail, update
+from jobs.views import post_a_job,jobs, detail, update, delete
 from django.views.generic import DetailView, UpdateView
 
 urlpatterns = [
@@ -33,6 +33,7 @@ urlpatterns = [
     path('co-home/', co_home, name= 'co_home'),
     path('post-a-job/', post_a_job, name= 'post_a_job'),
     path('jobs/', jobs, name='jobs'),
-    path('jobs/<int:pk>/', detail.as_view(), name='detail'),
-    path('update/<int:pk>/', update.as_view(), name='update')
+    path('jobs/<int:pk>/', detail, name='detail'),
+    path('update/<int:pk>/', update.as_view(), name='update'),
+    path('delete/<int:pk>/', delete, name='delete')
 ]

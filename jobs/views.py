@@ -2,7 +2,7 @@ from django.shortcuts import render,redirect
 from jobs.forms import PostingForm
 from django.contrib import messages
 from jobs.models import Job
-from django.views.generic import DetailView,UpdateView
+from django.views.generic import DetailView,UpdateView,DeleteView
 from django.urls import reverse_lazy
 
 def post_a_job(request):
@@ -28,18 +28,23 @@ def post_a_job(request):
 def jobs(request):
     if request.user.is_authenticated:
         company_name = request.user.username
-        jobs = Job.objects.filter(company_name = company_name)
+        jobs = Job.objects.filter(company_name= company_name)
         return render(request, 'jobs.html', {'jobs': jobs})
     else:
         return redirect('co_login')
 
-class detail(DetailView):
-    model = Job
-    template_name = 'detail.html'
-    context_object_name = 'job'
+def detail(request, pk):
+    job = Job.objects.get(pk= pk)
+    return render(request, 'detail.html', {'job': job})
 
 class update(UpdateView):
     model = Job
     form_class = PostingForm
     template_name = 'update.html'
     success_url = reverse_lazy('jobs')
+
+def delete(request, pk):
+    if request.method == 'POST':
+        job = Job.objects.get(pk= pk)
+        job.delete()
+        return redirect('jobs')
