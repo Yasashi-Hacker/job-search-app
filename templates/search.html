@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search|Sokunabi</title>
+    <style>
+        body {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                margin: 0;
+        }
+        h1 {
+                font-size: 70px; 
+                color: #0072C6;
+                margin-top:-240px;
+                margin-bottom:10px;
+        }
+        input {
+                width: 500px;
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 40px;
+                padding-right: 40px;
+                font-size: 22px;
+                border: 2px solid #0072C6;
+                border-radius: 35px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sokunabi</h1>
+    <form action="{% url 'search' %}" method="GET" style="margin-bottom: 100px;">
+        <input type="text" placeholder="Company or Job Title" name="q" value="{{request.GET.q}}" required>
+    </form>
+    <h2>Results</h2>
+    <div style="margin-bottom: 40px;">
+        <table style="border-collapse: collapse; font-size: 25px;">
+            <thead>
+                <tr style="background-color: #0072C6;"">
+                    <th>Job Title</th>
+                    <th>Company Name</th>
+                    <th>Deadline</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for object in jobs %}
+                <tr>
+                    <td><a href="{% url 'search_detail' object.id %}">{{ object.job_title }}</a></td>
+                    <td>{{ object.company_name }}</td>
+                    <td>{{ object.deadline }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

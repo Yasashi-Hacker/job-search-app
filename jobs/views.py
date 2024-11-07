@@ -4,6 +4,7 @@ from django.contrib import messages
 from jobs.models import Job
 from django.views.generic import DetailView,UpdateView,DeleteView
 from django.urls import reverse_lazy
+from django.db.models import Q
 
 def post_a_job(request):
     if request.method == 'POST':
@@ -48,3 +49,12 @@ def delete(request, pk):
         job = Job.objects.get(pk= pk)
         job.delete()
         return redirect('jobs')
+    
+def search(request):
+    query = request.GET.get('q')
+    jobs = Job.objects.filter(Q(company_name__icontains=query) | Q(job_title__icontains=query))
+    return render(request, 'search.html', {'jobs': jobs})
+
+def search_detail(request,pk):
+    job = Job.objects.get(pk= pk)
+    return render(request, 'search_detail.html', {'job': job})
