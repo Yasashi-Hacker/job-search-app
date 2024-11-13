@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path
 from users.views import sign_up,user_login,index,user_home
 from companies.views import for_employers,co_sign_up,co_login,co_home
-from jobs.views import post_a_job,jobs, detail, update, delete, search, search_detail
+from jobs.views import post_a_job,jobs, detail, update, delete, search, search_detail, company_profile
 from django.views.generic import DetailView, UpdateView
 
 urlpatterns = [
@@ -37,5 +37,6 @@ urlpatterns = [
     path('update/<int:pk>/', update.as_view(), name='update'),
     path('delete/<int:pk>/', delete, name='delete'),
     path('search/', search, name='search'),
-    path('search-detail/<int:pk>/', search_detail, name='search_detail')
+    path('search-detail/<int:pk>/', search_detail, name='search_detail'),
+    path('company-profile/<int:pk>/', company_profile, name='company_profile')
 ]

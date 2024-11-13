@@ -58,3 +58,7 @@ def search(request):
 def search_detail(request,pk):
     job = Job.objects.get(pk= pk)
     return render(request, 'search_detail.html', {'job': job})
+
+def company_profile(request,pk):
+    job = Job.objects.get(pk= pk)
+    return render(request, 'company_profile.html', {'job': job})

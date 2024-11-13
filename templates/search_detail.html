@@ -24,7 +24,7 @@
 </head>
 <body>
     <div class="job_detail" style="margin-bottom: 60px;">
-        <p>Company Name:<br><strong>{{ job.company_name }}</strong></br></p>
+        <p>Company Name:<br><strong><a href="{% url 'company_profile' job.id %}">{{ job.company_name }}</a></strong></br></p>
         <p>Job Title:<br><strong>{{ job.job_title }}</strong></br></p>
         <p>Salary:<br><strong>{{ job.salary }}円</strong></br></p>
         <p>Qualification:</br><strong>{{ job.qualification }}</strong></br></p>
